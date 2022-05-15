@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    :root {
+        --svg--rect-height: 3.5rem;
+        --svg--rect-width: 8rem;
+    }
+
+    html {
+        @apply h-full text-xs md:text-sm scroll-smooth;
+    }
+
+    .main-bg {
+        @apply bg-[url('../assets/images/person-listening-to-music.jpg')] bg-no-repeat bg-top bg-fixed bg-cover;
+    }
+
+    .prose-config {
+        @apply prose max-w-none 
+            prose-h1:font-normal prose-h1:my-4 prose-h1:tracking-widest prose-h1:text-6xl
+            prose-h2:font-semibold prose-h2:m-0 prose-h2:text-2xl
+            md:prose-h2:text-4xl
+            prose-h3:font-medium prose-h3:text-xl prose-h3:m-0
+            md:prose-h3:text-3xl
+            prose-h4:font-semibold prose-h4:text-lg prose-h4:m-0
+            md:prose-h4:text-2xl
+            prose-p:m-0 prose-p:text-base
+            md:prose-p:text-xl
+            prose-img:m-0 prose-img:rounded-sm
+            prose-hr:mx-1 prose-hr:my-4 prose-hr:border-0 prose-hr:h-px prose-hr:bg-stone-500/40;
+    }
+
+    .fade-out {
+        @apply opacity-0 transition-[opacity_transform] duration-300 ease-in-out;
+    }
+
+    .fade-in {
+        @apply opacity-100 translate-y-0 transition-[opacity_transform] duration-300 ease-in-out;
+    }
+
+    .header-normal {
+        @apply sticky top-0 z-50 h-28 bg-neutral-50/10  backdrop-blur-lg transition-[height] duration-300 ease-in-out;
+    }
+
+    .header-mini {
+        @apply h-20 bg-neutral-900 backdrop-blur-0 transition-[height] duration-300 ease-in-out z-50;
+    }
+
+    .header-lg {
+        --svg--rect-height: 3.5rem;
+        --svg--rect-width: 8rem;
+    }
+
+    .header-lg .header-logo {
+        @apply block;
+    }
+
+    .header-sm {
+        --svg--rect-height: 4rem;
+        --svg--rect-width: 4rem;
+    }
+
+    .header-sm .header-logo {
+        @apply hidden;
+    }
+
+    .header-mini.header-lg .header-logo {
+        @apply hidden;
+    }
+
+    .items--nav {
+        @apply flex items-center w-2/3 p-0 lg:ml-14;
+    }
+
+    .link-icon {
+        @apply hidden h-10 w-10 filter invert sepia-[12%] saturate-[2%] hue-rotate-[359deg] brightness-[115%] contrast-[101%] 
+        hover:invert-[71%] hover:sepia-[92%] hover:saturate-[507%] hover:hue-rotate-[348deg] hover:brightness-[98%] hover:contrast-[108%];
+    }
+
+    .header-lg .link-text {
+        @apply block;
+    }
+
+    .header-sm .link-text {
+        @apply hidden;
+    }
+
+    .header-lg .link-icon {
+        @apply hidden;
+    }
+
+    .header-lg .link-icon.icon--visible {
+        @apply block;
+    }
+
+    .header-sm .link-icon {
+        @apply block;
+    }
+
+    .items--cart-user {
+        @apply flex items-center w-1/3 p-0 lg:w-auto;
+    }
+
+    .header-link-item {
+        @apply w-full list-none my-7 p-0 transition-colors duration-300 ease-in-out 
+        lg:m-0 lg:mx-2 lg:border-0 lg:w-[var(--svg--rect-width)];
+    }
+
+    .header-link {
+        @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col tracking-tight leading-6
+        text-center no-underline text-2xl hover:text-amber-300 visited:text-white z-50;
+    }
+
+    .link-svg {
+        @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+        h-[var(--svg--rect-height)] w-[var(--svg--rect-width)] rounded;
+    }
+
+    .rectangle {
+        height: 100%;
+        width: 100%;
+        fill: transparent;
+        stroke-width: 5;
+        stroke: hsl(45, 100%, 51%);
+
+        /* Cover the whole perimeter of the box */
+        stroke-dasharray: calc((var(--svg--rect-height) + var(--svg--rect-width)) * 2);
+        stroke-dashoffset: calc((var(--svg--rect-height) + var(--svg--rect-width)) * 2);
+        /* stroke-dashoffset: 0; */
+        stroke-linecap: round;
+        transition: stroke-dashoffset 300ms ease-in-out;
+    }
+
+    .header-link:hover + .link-svg .rectangle {
+        stroke-dashoffset: 0;
+    }
+
+    .cart-count {
+        @apply absolute -top-3 -right-2 flex justify-center items-center h-6 w-6
+        rounded-full text-xs font-bold bg-amber-600 opacity-80 transition-transform duration-200 ease-in-out;
+    }
+
+    .cart-active {
+        @apply scale-125;
+    }
+
+    .know-more {
+        @apply relative w-full mt-10 p-4 bg-transparent text-3xl font-medium uppercase border-2 border-solid border-amber-500;
+    }
+
+    .header-down-arrow {
+        @apply h-6 w-6 mx-auto mt-5 transition-[margin_opacity] duration-500 ease-in-out
+        group-hover:mt-10;
+    }
+
+    .deal-container {
+        @apply flex flex-col-reverse w-11/12 my-1 mx-auto p-px bg-slate-100/90 backdrop-blur-sm first:mt-0
+        lg:w-full lg:flex-row lg:odd:flex-row-reverse;
+    }
+
+    .deals-text-container {
+        @apply relative w-full grow p-0 lg:p-4 lg:w-1/2;
+    }
+
+    .deals-title {
+        @apply h-[4rem] text-left font-medium uppercase leading-8 line-clamp-2;
+    }
+
+    .button-buy,
+    .button-cart {
+        @apply px-4 py-2 border-2 border-solid border-amber-500 rounded font-medium shadow-lg 
+        hover:shadow-none active:scale-95 transition-[colors_shadows_transform] duration-300 ease-in-out;
+    }
+
+    .button-buy {
+        @apply mr-2 bg-amber-500 text-white hover:bg-amber-500/80;
+    }
+
+    .button-cart {
+        @apply inline-flex items-center ml-2;
+    }
+
+    .deals-image-container {
+        @apply relative w-full overflow-hidden lg:w-1/2;
+    }
+
+    .deals-item-img {
+        @apply w-full h-[31rem] object-cover object-center;
+    }
+
+    .image-title-text {
+        @apply absolute top-0 left-0 right-0 py-4 text-white text-center uppercase bg-black/80
+        transition-opacity duration-300 ease-in-out peer-hover:opacity-50 lg:hidden;
+    }
+
+    .deals-reveal-button {
+        @apply flex flex-col absolute bottom-0 w-full mt-4 p-2 text-white bg-black/50 backdrop-blur-lg lg:hidden;
+    }
+
+    .deals-text-toggle-container {
+        @apply transition-opacity duration-300;
+    }
+
+    .test-border {
+        @apply border-2 border-solid border-red-700;
+    }
+
+    .bg-collections-custom-clip {
+        clip-path: polygon(0 0, 100% 0, 93% 100%, 0 100%);
+    }
+
+    .collections {
+        @apply grid gap-1 grid-auto-fit-lg p-4 bg-slate-900/30 backdrop-blur-lg mt-8
+        lg:w-5/6 md:p-8 md:mx-auto;
+    }
+
+    .collection-container {
+        @apply relative h-96 w-full p-px bg-slate-100/90
+        hover:p-0 hover:ring-2 hover:ring-amber-400 hover:bg-amber-400 
+        transition-[shadow_colors_transform] duration-300 ease-in-out;
+    }
+
+    /* .collection-container.fade-in {
+        @apply rotate-0;
+    } */
+
+    .collections-image {
+        @apply h-full w-full object-cover;
+    }
+
+    .collections-text {
+        @apply absolute top-full left-0 right-0 p-4 -translate-y-full 
+        text-white text-center font-semibold uppercase bg-black/70 backdrop-brightness-50
+        transition-opacity duration-300 ease-in-out group-hover:opacity-30;
+    }
+
+    .collections-clip {
+        clip-path: polygon(0 0, 92% 0, 100% 8%, 100% 100%, 0 100%);
+        transition: clip-path 300ms ease-in-out;
+    }
+
+    .collection-container:hover .collections-clip {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .bg-contact-custom-clip {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 7% 100%, 0 0);
+    }
+
+    .form-input-container {
+        @apply relative h-16 w-11/12 grow my-1 flex flex-col justify-center items-center lg:w-3/4;
+    }
+
+    .form-user-input {
+        @apply form-input w-full h-full pt-7 pl-2 border-0 text-xl rounded-sm 
+        focus:ring-2 focus:ring-amber-400 valid:ring-amber-500;
+    }
+
+    .form-input-label {
+        @apply absolute top-1/4 flex h-full w-full pl-4 pointer-events-none text-slate-400 text-xl
+        peer-focus:top-1 peer-focus:pl-2 peer-focus:text-sm peer-focus:uppercase peer-focus:text-amber-600 peer-focus:font-semibold 
+        peer-valid:top-1 peer-valid:pl-2 peer-valid:text-sm peer-valid:uppercase peer-valid:text-amber-600 peer-valid:font-semibold;
+    }
+
+    .label-transition {
+        @apply transition-[top_padding] duration-300 ease-in-out;
+    }
+
+    .footer-title {
+        @apply text-base font-medium pl-1 capitalize md:text-lg;
+    }
+
+    .footer-link {
+        @apply tracking-tight no-underline text-sm text-gray-800 font-normal hover:text-black visited:text-gray-600 overflow-hidden
+        transition-colors duration-300 ease-in-out md:text-base;
+    }
+}
